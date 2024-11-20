@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Foto</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Tambah Foto</h2>
+        <form id="addPhotoForm" onsubmit="return validateForm()">
+            <div class="mb-3">
+                <label for="judul" class="form-label">Judul Foto</label>
+                <input type="text" class="form-control" id="judul" name="judul" required>
+            </div>
+            <div class="mb-3">
+                <label for="url" class="form-label">URL Foto</label>
+                <input type="url" class="form-control" id="url" name="url" required>
+            </div>
+            <div class="mb-3">
+                <label for="deskripsi" class="form-label">Deskripsi</label>
+                <textarea class="form-control" id="deskripsi" name="deskripsi" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Tambah Foto</button>
+        </form>
+    </div>
+
+    <script>
+        function validateForm() {
+            const judul = document.getElementById('judul').value.trim();
+            const url = document.getElementById('url').value.trim();
+
+            if (judul === '') {
+                alert('Judul tidak boleh kosong!');
+                return false;
+            }
+
+            if (url === '') {
+                alert('URL tidak boleh kosong!');
+                return false;
+            }
+
+            alert('Foto berhasil ditambahkan!');
+            return true;
+        }
+    </script>
+</body>
+</html>
