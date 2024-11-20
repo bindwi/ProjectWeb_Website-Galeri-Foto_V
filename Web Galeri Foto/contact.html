@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontak</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Hubungi Kami</h2>
+        <form id="contactForm" onsubmit="return validateContactForm()">
+            <div class="mb-3">
+                <label for="nama" class="form-label">Nama</label>
+                <input type="text" class="form-control" id="nama" name="nama" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="pesan" class="form-label">Pesan</label>
+                <textarea class="form-control" id="pesan" name="pesan" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Kirim Pesan</button>
+        </form>
+    </div>
+
+    <script>
+        function validateContactForm() {
+            const nama = document.getElementById('nama').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const pesan = document.getElementById('pesan').value.trim();
+
+            if (nama === '' || email === '' || pesan === '') {
+                alert('Semua kolom wajib diisi!');
+                return false;
+            }
+
+            alert('Pesan Anda telah dikirim!');
+            return true;
+        }
+    </script>
+</body>
+</html>
