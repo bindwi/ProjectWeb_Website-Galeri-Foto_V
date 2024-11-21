@@ -4,23 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tentang</title>
+ <!-- Bootstrap CSS dari CDN -->
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+ <style>
+     .bg-gradient {
+         background: linear-gradient(45deg, #007bff, #6c757d);
+     }
+     .card-shadow {
+         border-radius: 15px;
+     }
+     .gallery-img {
+         height: 200px;
+         object-fit: cover;
+     }
+ </style>
 </head>
-<body>
-    <header class="bg-dark text-white text-center py-3">
-        <h1>Galeri Foto</h1>
-        <nav>
-            <a href="index.html" class="text-white mx-2">Home</a>
-            <a href="add.html" class="text-white mx-2">Tambah Foto</a>
-            <a href="about.html" class="text-white mx-2">Tentang</a>
-            <a href="contact.html" class="text-white mx-2">Kontak</a>
-        </nav>
+<Body>
+ 
+ <!-- Header Section -->
+ <header class="bg-dark text-white text-center py-3">
+     <nav class="navbar navbar-expand-lg navbar-dark bg-gradient">
+         <div class="container">
+             <a class="navbar-brand fw-bold" href="about.html">Tentang Galeri Foto</a>
+             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                 <span class="navbar-toggler-icon"></span>
+             </button>
+             <div class="collapse navbar-collapse" id="navbarNav">
+                 <ul class="navbar-nav ms-auto">
+                     <li class="nav-item">
+                         <a class="nav-link active" href="index.html">Home</a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link" href="add.html">Tambah Foto</a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link" href="about.html">Tentang</a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link" href="contact.html">Kontak</a>
+                     </li>
+                 </ul>
+             </div>
+         </div>
+     </nav>
     </header>
 
-    <div class="container mt-5">
+    <main class="container mt-5">
         <h2>Tentang Galeri Foto</h2>
         <p>
             Galeri Foto adalah website sederhana yang dibuat untuk menampilkan koleksi foto. 
-            Website ini dibangun menggunakan HTML, CSS, Bootstrap, dan validasi form dengan JavaScript.
         </p>
     </div>
 </body>

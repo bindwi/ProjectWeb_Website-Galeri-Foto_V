@@ -3,56 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tambah Foto</title>
+    <title>Tambah Foto - Galeri Foto</title>
+    <!-- Bootstrap CSS dari CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .bg-gradient {
+            background: linear-gradient(45deg, #007bff, #6c757d);
+        }
+        .card-shadow {
+            border-radius: 15px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
-<body>
+<body class="bg-light">
+
+    
+    <!-- Header Section -->
+    <header class="py-5 text-center text-white bg-gradient">
+         <!-- Header Section -->
     <header class="bg-dark text-white text-center py-3">
-        <h1>Galeri Foto</h1>
-        <nav>
-            <a href="index.html" class="text-white mx-2">Home</a>
-            <a href="add.html" class="text-white mx-2">Tambah Foto</a>
-            <a href="about.html" class="text-white mx-2">Tentang</a>
-            <a href="contact.html" class="text-white mx-2">Kontak</a>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-gradient">
+            <div class="container">
+                <a class="navbar-brand fw-bold" href="add.html">Galeri Foto</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="add.html">Tambah Foto</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">Tentang</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Kontak</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </nav>
     </header>
+        <div class="container">
+            <h1 class="fw-bold">Tambah Foto Baru</h1>
+            <p class="lead">Isi formulir di bawah untuk menambahkan foto ke galeri.</p>
+        </div>
+    </header>
 
-    <div class="container mt-5">
-        <h2>Tambah Foto</h2>
-        <form id="addPhotoForm" onsubmit="return validateForm()">
-            <div class="mb-3">
-                <label for="judul" class="form-label">Judul Foto</label>
-                <input type="text" class="form-control" id="judul" name="judul" required>
+    <!-- Form Section -->
+    <main class="container my-5">
+        <div class="card shadow border-0 card-shadow">
+            <div class="card-body">
+                <form id="addPhotoForm" onsubmit="return validateForm()">
+                    <div class="mb-3">
+                        <label for="judul" class="form-label">Judul Foto</label>
+                        <input type="text" class="form-control" id="judul" name="judul">
+                        <div class="invalid-feedback">Judul harus diisi!</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="url" class="form-label">URL Foto</label>
+                        <input type="url" class="form-control" id="url" name="url">
+                        <div class="invalid-feedback">URL harus diisi dengan format yang valid!</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="deskripsi" class="form-label">Deskripsi Foto</label>
+                        <textarea class="form-control" id="deskripsi" name="deskripsi" rows="3"></textarea>
+                        <div class="invalid-feedback">Deskripsi harus diisi!</div>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Tambah Foto</button>
+                </form>
             </div>
-            <div class="mb-3">
-                <label for="url" class="form-label">URL Foto</label>
-                <input type="url" class="form-control" id="url" name="url" required>
-            </div>
-            <div class="mb-3">
-                <label for="deskripsi" class="form-label">Deskripsi</label>
-                <textarea class="form-control" id="deskripsi" name="deskripsi" rows="3"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Tambah Foto</button>
-        </form>
-    </div>
+        </div>
+    </main>
 
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2024 Galeri Foto. All Rights Reserved.</p>
+    </footer>
+
+    <!-- JavaScript -->
     <script>
         function validateForm() {
-            const judul = document.getElementById('judul').value.trim();
-            const url = document.getElementById('url').value.trim();
+            const judul = document.getElementById('judul');
+            const url = document.getElementById('url');
+            const deskripsi = document.getElementById('deskripsi');
+            let isValid = true;
 
-            if (judul === '') {
-                alert('Judul tidak boleh kosong!');
-                return false;
+            // Validasi Judul
+            if (judul.value.trim() === '') {
+                judul.classList.add('is-invalid');
+                isValid = false;
+            } else {
+                judul.classList.remove('is-invalid');
             }
 
-            if (url === '') {
-                alert('URL tidak boleh kosong!');
-                return false;
+            // Validasi URL
+            if (!url.value.match(/^https?:\/\/[^\s$.?#].[^\s]*$/)) {
+                url.classList.add('is-invalid');
+                isValid = false;
+            } else {
+                url.classList.remove('is-invalid');
             }
 
-            alert('Foto berhasil ditambahkan!');
-            return true;
+            // Validasi Deskripsi
+            if (deskripsi.value.trim() === '') {
+                deskripsi.classList.add('is-invalid');
+                isValid = false;
+            } else {
+                deskripsi.classList.remove('is-invalid');
+            }
+
+            return isValid;
         }
     </script>
+
+    <!-- Bootstrap JS dari CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
